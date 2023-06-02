@@ -1,0 +1,61 @@
+Note:
+(1) Combined basic code strings in the format: (Variation 1 | Variation 2 | Variation 3 | Variation 4 ) Common Denominator
+(2) Added additional regex syntax, i.e. ?: in main project file
+
+##### Variation 1
+# (15, 22, 29) ounces):
+#       Minute Maid Zero Sugar
+# 29 ounce:
+#       Pink Lemonade
+<h3 class="js-accordion__header">(.*)<\/h3>.*\n\n\s*.*
+
+##### Variation 2
+# Hamburger w/ onion, With mustard & ketchup instead of spread
+# Cheeseburger w/ onion, With mustard & ketchup instead of spread
+# Double-double w/ onion, With mustard & ketchup instead of spread
+<h3 class="js-accordion__header">\n\s*(.*)\n\s*<\/h3>.*\n\n\s*<div class="sf-Long-text" ><dl>\n\s*
+
+##### Variation 3
+# Hamburger w/ onion, Protein style
+# Cheeseburger w/ onion, Protein style
+# Double-double w/ onion, Protein style
+# (15, 22, 29) ounce:
+#       Coca-Cola
+#       Diet Coke
+#       7-up
+#       Dr Pepper
+#       Barq's Root Beer
+#       Barq's Caffeine Free Root Beer
+# (15, 22) ounce:
+#       Pink Lemonade
+# (9, 14, 19) ounce:
+#       Iced tea
+#       Sweet tea*
+# Hot Cocoa W/ Marshmallows
+<h3 class="js-accordion__header">(.*)<\/h3>.*\n\n\s*<div class="sf-Long-text" ><dl>\n\s*
+
+##### Variation 4
+# Hamburger w/ onion
+# French Fries
+# Pink Lemonade
+# Minute Maid Zero Sugar Lemonade
+# Hot Cocoa
+# Cheeseburger w/ onion
+# Double-double w/ onion
+# Chocolate shake
+# Vanilla Shake
+# Strawberry Shake
+# Coca-Cola
+# Diet Coke
+# 7-up
+# Dr Pepper
+# Barq's Root Beer
+# Barq's Caffeine Free Root Beer
+# Iced Tea
+# Sweet Tea*
+# Coffee
+# Milk
+<\/span>\n\s*(\w.*)(?:\n\s*)?<\/h2> <div class="js-accordion__panel">(?:.*)?.*\n\n\s*<div class="sf-Long-text" >(?:(?:\s)?<dl>\n\s*)?(?:.*)?
+
+##### Common Denominator
+<dt>(Serving Size \(g\))<\/dt>(?:\n\s*)?<dd>(\d*(?: oz.)?)<\/dd>(?:\n\s*)?<dt>(Total Calories)<\/dt>(?:\n\s*)?<dd>(\d*)<\/dd>
